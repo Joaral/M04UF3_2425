@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #3a4f7a; /* Nuevo color de fondo */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -25,7 +25,7 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: #ff5733; /* Nuevo color rojo */
 }
 
 @keyframes App-logo-spin {
@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+/* Cambiamos la velocidad de la animación */
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 5s linear;
+  }
+}
+
