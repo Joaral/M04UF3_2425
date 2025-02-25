@@ -29,4 +29,25 @@ function Die() {
   );
 }
 
+function RollButton() {
+  const [count, setCount] = useState(5);
+  const [text, setText] = useState("5");
+
+  useEffect(() => {
+    if (count > 0) {
+      const timer = setInterval(() => {
+        setCount(prevCount => {
+          const newCount = prevCount - 1;
+          setText(newCount > 0 ? newCount.toString() : "Roll!!!");
+          return newCount;
+        });
+      }, 1000);
+      return () => clearInterval(timer);
+    }
+  }, []);
+
+  return <button>{text}</button>;
+}
+
+
 export default Die;
