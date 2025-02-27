@@ -1,53 +1,33 @@
-import { useState, useEffect } from 'react';
 import './Die.css';
 
-function Die() {
-  let [number, setNumber] = useState(1);
-  
-  function roll() {
-    let r = Math.floor(Math.random() * 6) + 1;
-    setNumber(r);
-  }
+import { useState } from 'react';
 
-  const [count, setCount] = useState(5);
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCount(prevCount => (prevCount > 0 ? prevCount - 1 : 0));
-    }, 1000);
+function Die(props) {
 
-    return () => clearInterval(timer);
-  }, []);
+	let [number, setNumber] = useState("-");
+
+	function get_random ()
+	{
+		return Math.floor(Math.random() * 6) + 1
+	}
+
+	function set_random ()
+	{
+		let r = get_random();
+		setNumber(r);
+	}
+
+	if (props.roll){
+		number = get_random();
+	}
+
 
   return (
-    <section>
-      <button className="Die" onClick={roll}>
-        <p className="DieNumber">{number}</p>
-      </button>
-      <p>{count}</p>
-    </section>
+    <button className="Die" onClick={set_random}>
+			<p className="DieNumber">{number}</p>
+    </button>
   );
 }
-
-function RollButton() {
-  const [count, setCount] = useState(5);
-  const [text, setText] = useState("5");
-
-  useEffect(() => {
-    if (count > 0) {
-      const timer = setInterval(() => {
-        setCount(prevCount => {
-          const newCount = prevCount - 1;
-          setText(newCount > 0 ? newCount.toString() : "Roll!!!");
-          return newCount;
-        });
-      }, 1000);
-      return () => clearInterval(timer);
-    }
-  }, []);
-
-  return <button>{text}</button>;
-}
-
 
 export default Die;

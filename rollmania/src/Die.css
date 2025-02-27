@@ -1,5 +1,5 @@
 .Die {
-  display:flex;
+	display:flex;
 	justify-content:center;
 	align-items:center;
 	font-weight:bold;
@@ -7,6 +7,7 @@
 	width:128px;
 	height:128px;
 	background-color:green;
-	color:#ffffff
-	}
+	color:#ffffff;
+	margin-top: 50px;
+}
 
